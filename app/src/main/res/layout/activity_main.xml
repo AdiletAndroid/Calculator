@@ -13,6 +13,17 @@
         app:layout_constraintBottom_toTopOf="@+id/container"
         app:layout_constraintTop_toTopOf="parent">
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/appearing_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:text="Second Activity"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/gray"
+            app:cornerRadius="12dp"/>
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"

@@ -4,19 +4,27 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_calc"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_calc"
         android:supportsRtl="true"
         android:theme="@style/Theme.Lesson27">
         <activity
-            android:name="com.example.calculator.MainActivity"
+            android:name="com.example.calculator.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.calculator.SecondActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.calculator.MainActivity"
+            android:exported="false">
+
         </activity>
     </application>
 

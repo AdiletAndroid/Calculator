@@ -2,11 +2,15 @@ package com.example.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.lesson2_7.R;
+import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,15 +19,23 @@ public class MainActivity extends AppCompatActivity {
     private boolean isOperationClick;
     private String operation;
     private Integer result;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.textView);
+        button = findViewById(R.id.appearing_btn);
+        button.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            intent.putExtra("result", result);
+            startActivity(intent);
+        });
     }
 
     public void onNumberClick(View view) {
+        button.setVisibility(View.GONE);
         switch (view.getId()) {
             case R.id.one:
                 updateNumber("1");
@@ -79,15 +91,19 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.plus:
                 updateOperation("+");
+                button.setVisibility(View.GONE);
                 break;
             case R.id.minus:
                 updateOperation("-");
+                button.setVisibility(View.GONE);
                 break;
             case R.id.division:
                 updateOperation("/");
+                button.setVisibility(View.GONE);
                 break;
             case R.id.multiplication:
                 updateOperation("*");
+                button.setVisibility(View.GONE);
                 break;
 
             case R.id.equals:
@@ -95,11 +111,15 @@ public class MainActivity extends AppCompatActivity {
                 result = 0;
                 calculate();
                 isOperationClick = true;
+                button.setVisibility(View.VISIBLE);
                 break;
         }
     }
 
     private void calculate() {
+        if (operation == null) {
+            return;
+        }
         switch (operation) {
             case "+":
                 result = firstVar + secondVar;
